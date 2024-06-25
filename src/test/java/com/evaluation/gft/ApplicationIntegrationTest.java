@@ -166,4 +166,33 @@ public class ApplicationIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json(expectedResponse));
     }
+
+    @Test
+    public void testGetProductPricesInformationNotFound() throws Exception {
+        String url = "/products/price_info";
+        String requestBody = "{" +
+                "\"productId\":\"35455\"," +
+                "\"brandId\":\"2\"," +
+                "\"requestedDate\":\"2020-06-16-21.00.00\"" +
+                "}";
+
+        mockMvc.perform(post(url)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(requestBody))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void testGetProductPricesInformationBadRequest() throws Exception {
+        String url = "/products/price_info";
+        String requestBody = "{" +
+                "\"productId\":\"35455\"," +
+                "\"requestedDate\":\"2020-06-16-21.00.00\"" +
+                "}";
+
+        mockMvc.perform(post(url)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(requestBody))
+                .andExpect(status().isBadRequest());
+    }
 }
