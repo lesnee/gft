@@ -5,14 +5,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -49,12 +48,8 @@ public class ApplicationIntegrationTest {
 
     @Test
     public void testGetProductPricesInformationScenario1() throws Exception {
-        String url = "/products/price_info";
-        String requestBody = "{" +
-                "\"productId\":\"35455\"," +
-                "\"brandId\":\"1\"," +
-                "\"requestedDate\":\"2020-06-14-10.00.00\"" +
-                "}";
+        String url = "/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-14-10.00.00";
+
         String expectedResponse = "{" +
                 "\"productId\":\"35455\"," +
                 "\"brandId\":\"1\"," +
@@ -64,21 +59,15 @@ public class ApplicationIntegrationTest {
                 "\"price\":35.50" +
                  "}";
 
-        mockMvc.perform(post(url)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(requestBody))
+        mockMvc.perform(get(url))
                 .andExpect(status().isOk())
                 .andExpect(content().json(expectedResponse));
     }
 
     @Test
     public void testGetProductPricesInformationScenario2() throws Exception {
-        String url = "/products/price_info";
-        String requestBody = "{" +
-                "\"productId\":\"35455\"," +
-                "\"brandId\":\"1\"," +
-                "\"requestedDate\":\"2020-06-14-16.00.00\"" +
-                "}";
+        String url = "/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-14-16.00.00";
+
         String expectedResponse = "{" +
                 "\"productId\":\"35455\"," +
                 "\"brandId\":\"1\"," +
@@ -88,21 +77,14 @@ public class ApplicationIntegrationTest {
                 "\"price\":25.45" +
                 "}";
 
-        mockMvc.perform(post(url)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(requestBody))
+        mockMvc.perform(get(url))
                 .andExpect(status().isOk())
                 .andExpect(content().json(expectedResponse));
     }
 
     @Test
     public void testGetProductPricesInformationScenario3() throws Exception {
-        String url = "/products/price_info";
-        String requestBody = "{" +
-                "\"productId\":\"35455\"," +
-                "\"brandId\":\"1\"," +
-                "\"requestedDate\":\"2020-06-14-21.00.00\"" +
-                "}";
+        String url = "/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-14-21.00.00";
         String expectedResponse = "{" +
                 "\"productId\":\"35455\"," +
                 "\"brandId\":\"1\"," +
@@ -112,21 +94,15 @@ public class ApplicationIntegrationTest {
                 "\"price\":35.50" +
                 "}";
 
-        mockMvc.perform(post(url)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(requestBody))
+        mockMvc.perform(get(url))
                 .andExpect(status().isOk())
                 .andExpect(content().json(expectedResponse));
     }
 
     @Test
     public void testGetProductPricesInformationScenario4() throws Exception {
-        String url = "/products/price_info";
-        String requestBody = "{" +
-                "\"productId\":\"35455\"," +
-                "\"brandId\":\"1\"," +
-                "\"requestedDate\":\"2020-06-15-10.00.00\"" +
-                "}";
+        String url = "/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-15-10.00.00";
+
         String expectedResponse = "{" +
                 "\"productId\":\"35455\"," +
                 "\"brandId\":\"1\"," +
@@ -136,21 +112,15 @@ public class ApplicationIntegrationTest {
                 "\"price\":30.50" +
                 "}";
 
-        mockMvc.perform(post(url)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(requestBody))
+        mockMvc.perform(get(url))
                 .andExpect(status().isOk())
                 .andExpect(content().json(expectedResponse));
     }
 
     @Test
     public void testGetProductPricesInformationScenario5() throws Exception {
-        String url = "/products/price_info";
-        String requestBody = "{" +
-                "\"productId\":\"35455\"," +
-                "\"brandId\":\"1\"," +
-                "\"requestedDate\":\"2020-06-16-21.00.00\"" +
-                "}";
+        String url = "/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-16-21.00.00";
+
         String expectedResponse = "{" +
                 "\"productId\":\"35455\"," +
                 "\"brandId\":\"1\"," +
@@ -160,39 +130,32 @@ public class ApplicationIntegrationTest {
                 "\"price\":38.95" +
                 "}";
 
-        mockMvc.perform(post(url)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(requestBody))
+        mockMvc.perform(get(url))
                 .andExpect(status().isOk())
                 .andExpect(content().json(expectedResponse));
     }
 
     @Test
     public void testGetProductPricesInformationNotFound() throws Exception {
-        String url = "/products/price_info";
-        String requestBody = "{" +
-                "\"productId\":\"35455\"," +
-                "\"brandId\":\"2\"," +
-                "\"requestedDate\":\"2020-06-16-21.00.00\"" +
-                "}";
+        String url = "/products/price_info&productId=35455&brandId=2&requestedDate=2020-06-16-21.00.00";
 
-        mockMvc.perform(post(url)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(requestBody))
+        mockMvc.perform(get(url))
                 .andExpect(status().isNotFound());
     }
 
     @Test
-    public void testGetProductPricesInformationBadRequest() throws Exception {
-        String url = "/products/price_info";
-        String requestBody = "{" +
-                "\"productId\":\"35455\"," +
-                "\"requestedDate\":\"2020-06-16-21.00.00\"" +
-                "}";
+    public void testGetProductPricesInformationParamMissing() throws Exception {
+        String url = "/products/price_info&productId=35455&requestedDate=2020-06-16-21.00.00";
 
-        mockMvc.perform(post(url)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(requestBody))
-                .andExpect(status().isBadRequest());
+        mockMvc.perform(get(url))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void testGetProductPricesInformationInvalidDate() throws Exception {
+        String url = "/products/price_info&productId=35455&requestedDate=invalid";
+
+        mockMvc.perform(get(url))
+                .andExpect(status().isNotFound());
     }
 }
