@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @AllArgsConstructor
 @Service
-public class ProductService implements ProductUseCase {
+public class ProductUseCaseImpl implements ProductUseCase {
     ProductRepository repository;
 
     @Override

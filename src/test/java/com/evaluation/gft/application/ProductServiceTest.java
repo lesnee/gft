@@ -14,15 +14,15 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-class ProductServiceTest {
+class ProductUseCaseImplTest {
 
     private ProductRepository repository;
-    private ProductService productService;
+    private ProductUseCaseImpl productUseCase;
 
     @BeforeEach
     void setUp() {
         repository = mock(ProductRepository.class);
-        productService = new ProductService(repository);
+        productUseCase = new ProductUseCaseImpl(repository);
     }
 
     @Test
@@ -36,7 +36,7 @@ class ProductServiceTest {
         when(repository.getProductPricesInformation(productId, brandId, requestedDate))
                 .thenReturn(Optional.of(expectedProduct));
 
-        var actualProduct = productService.getProductPricesInformation(productId, brandId, requestedDate);
+        var actualProduct = productUseCase.getProductPricesInformation(productId, brandId, requestedDate);
 
         assertTrue(actualProduct.isPresent());
         assertEquals(expectedProduct, actualProduct.get());
@@ -51,7 +51,7 @@ class ProductServiceTest {
         when(repository.getProductPricesInformation(productId, brandId, requestedDate))
                 .thenReturn(Optional.empty());
 
-        var actualProduct = productService.getProductPricesInformation(productId, brandId, requestedDate);
+        var actualProduct = productUseCase.getProductPricesInformation(productId, brandId, requestedDate);
 
         assertFalse(actualProduct.isPresent());
     }
