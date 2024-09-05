@@ -64,39 +64,6 @@ class ProductControllerTest {
         assertEquals(HttpStatus.NOT_FOUND, result.getStatusCode());
     }
 
-    @Test
-    void testGetProductPricesInformation_withNullDate() {
-        var productId = "34554";
-        var brandId = "1";
-
-        var result = productController.getProductPricesInformation(productId, brandId, null);
-
-        verify(useCase, never()).getProductPricesInformation(any(), any(), any());
-        assertEquals(HttpStatus.BAD_REQUEST, result.getStatusCode());
-    }
-
-    @Test
-    void testGetProductPricesInformation_withNullProductId() {
-        var brandId = "1";
-        var date = LocalDateTime.of(2000, 1, 1, 12, 0, 0);
-
-        var result = productController.getProductPricesInformation(null, brandId, date);
-
-        verify(useCase, never()).getProductPricesInformation(any(), any(), any());
-        assertEquals(HttpStatus.BAD_REQUEST, result.getStatusCode());
-    }
-
-    @Test
-    void testGetProductPricesInformation_withNullBrandId() {
-        var productId = "34554";
-        var date = LocalDateTime.of(2000, 1, 1, 12, 0, 0);
-
-        var result = productController.getProductPricesInformation(productId, null, date);
-
-        verify(useCase, never()).getProductPricesInformation(any(), any(), any());
-        assertEquals(HttpStatus.BAD_REQUEST, result.getStatusCode());
-    }
-
     private Product createTestProduct(String productId, String brandId) {
         return new Product(
                 productId,

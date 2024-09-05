@@ -27,10 +27,6 @@ public class ProductController {
             @RequestParam String brandId,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd-HH.mm.ss") LocalDateTime requestedDate) {
 
-        if (productId == null || brandId == null || requestedDate == null) {
-            return ResponseEntity.badRequest().build();
-        }
-
         var product = useCase.getProductPricesInformation(productId, brandId, requestedDate);
 
         if (product.isEmpty()) {
