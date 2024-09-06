@@ -20,6 +20,14 @@ configurations {
 	}
 }
 
+sourceSets {
+	main {
+		java {
+			srcDir layout.buildDirectory.dir("generated/src/main/java")
+		}
+	}
+}
+
 repositories {
 	mavenCentral()
 }
@@ -41,9 +49,9 @@ dependencies {
 openApiGenerate {
 	generatorName = "spring"
 	inputSpec = "${projectDir}/src/main/resources/openapi.yaml"
-	outputDir = "${buildDir}/generated"
-	apiPackage = "com.evaluation.gft.api"
-	modelPackage = "com.evaluation.gft.model"
+	outputDir = layout.buildDirectory.dir("generated").get().toString()
+	apiPackage = "com.evaluation.gft.adapters.in.api"
+	modelPackage = "com.evaluation.gft.adapters.in.api"
 	invokerPackage = "com.evaluation.gft.invoker"
 	configOptions = [
 			dateLibrary : "java22",
@@ -59,3 +67,4 @@ tasks.withType(JavaCompile) {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
