@@ -1,6 +1,5 @@
 package com.evaluation.gft.adapters.in.api;
 
-import com.evaluation.gft.adapters.in.api.dto.ProductResponse;
 import com.evaluation.gft.adapters.in.api.mapper.ProductResponseMapper;
 import com.evaluation.gft.domain.ports.in.ProductUseCase;
 import lombok.AllArgsConstructor;
@@ -17,7 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/products")
-public class ProductController {
+public class ProductController implements ProductsApi {
     ProductUseCase useCase;
     ProductResponseMapper mapper;
 

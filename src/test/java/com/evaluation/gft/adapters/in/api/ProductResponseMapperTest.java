@@ -1,6 +1,5 @@
 package com.evaluation.gft.adapters.in.api;
 
-import com.evaluation.gft.adapters.in.api.dto.ProductResponse;
 import com.evaluation.gft.adapters.in.api.mapper.ProductResponseMapper;
 import com.evaluation.gft.domain.model.Product;
 import org.assertj.core.api.Assertions;
