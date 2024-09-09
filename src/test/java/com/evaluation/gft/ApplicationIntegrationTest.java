@@ -137,7 +137,7 @@ public class ApplicationIntegrationTest {
 
     @Test
     public void testGetProductPricesInformationNotFound() throws Exception {
-        String url = "/products/price_info&productId=35455&brandId=2&requestedDate=2020-06-16-21.00.00";
+        String url = "/products/price_info?productId=35455&brandId=2&requestedDate=2020-06-16-21.00.00";
 
         mockMvc.perform(get(url))
                 .andExpect(status().isNotFound());
@@ -148,7 +148,7 @@ public class ApplicationIntegrationTest {
         String url = "/products/price_info&productId=35455&requestedDate=2020-06-16-21.00.00";
 
         mockMvc.perform(get(url))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isBadRequest());
     }
 
     @Test
@@ -156,6 +156,6 @@ public class ApplicationIntegrationTest {
         String url = "/products/price_info&productId=35455&requestedDate=invalid";
 
         mockMvc.perform(get(url))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isBadRequest());
     }
 }

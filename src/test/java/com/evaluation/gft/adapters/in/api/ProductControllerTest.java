@@ -4,14 +4,15 @@ import com.evaluation.gft.adapters.in.api.dto.ProductResponse;
 import com.evaluation.gft.adapters.in.api.mapper.ProductResponseMapper;
 import com.evaluation.gft.domain.ports.in.ProductUseCase;
 import com.evaluation.gft.domain.model.Product;
+import com.evaluation.gft.exceptions.ProductNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
@@ -41,7 +42,7 @@ class ProductControllerTest {
         var response = createTestProductResponse(productId, brandId);
 
         when(useCase.getProductPricesInformation(productId, brandId, date))
-                .thenReturn(Optional.of(product));
+                .thenReturn(product);
         when(mapper.mapToResponse(product)).thenReturn(response);
 
         var result = productController.getProductPricesInformation(productId, brandId, date);
@@ -56,12 +57,10 @@ class ProductControllerTest {
         var brandId = "1";
         var date = LocalDateTime.of(2000, 1, 1, 12, 0, 0);
 
-        when(useCase.getProductPricesInformation(any(), any(), any()))
-                .thenReturn(Optional.empty());
+        when(useCase.getProductPricesInformation(any(), any(), any())).thenThrow(ProductNotFoundException.class);
 
-        var result = productController.getProductPricesInformation(productId, brandId, date);
-
-        assertEquals(HttpStatus.NOT_FOUND, result.getStatusCode());
+        assertThrows(ProductNotFoundException.class,
+                () -> productController.getProductPricesInformation(productId, brandId, date));
     }
 
     private Product createTestProduct(String productId, String brandId) {

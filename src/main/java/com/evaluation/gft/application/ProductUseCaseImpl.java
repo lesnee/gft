@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -15,7 +14,7 @@ public class ProductUseCaseImpl implements ProductUseCase {
     ProductRepository repository;
 
     @Override
-    public Optional<Product> getProductPricesInformation(String productId, String brandId,
+    public Product getProductPricesInformation(String productId, String brandId,
                                                          LocalDateTime requestedDate) {
         return repository.getProductPricesInformation(productId, brandId, requestedDate);
     }

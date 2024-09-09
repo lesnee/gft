@@ -2,6 +2,7 @@ package com.evaluation.gft.adapters.out.repository;
 
 import com.evaluation.gft.adapters.out.repository.mapper.ProductJpaMapper;
 import com.evaluation.gft.domain.model.Product;
+import com.evaluation.gft.exceptions.ProductNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,8 +10,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -41,12 +41,11 @@ class ProductRepositoryImplementationTest {
 
         var actualProduct = repository.getProductPricesInformation(productId, brandId, requestedDate);
 
-        assertTrue(actualProduct.isPresent());
-        assertEquals(expectedProduct, actualProduct.get());
+        assertEquals(expectedProduct, actualProduct);
     }
 
     @Test
-    void testGetProductPricesInformation_ReturnEmpty() {
+    void testGetProductPricesInformationNotFound() {
         var productId = "productId";
         var brandId = "brandId";
         var requestedDate = LocalDateTime.of(2000, 5, 1, 0, 0, 0);
@@ -54,9 +53,8 @@ class ProductRepositoryImplementationTest {
         when(repositoryJpa.getSortedProductPricesInformation(productId, brandId, requestedDate))
                 .thenReturn(Optional.empty());
 
-        var actualProduct = repository.getProductPricesInformation(productId, brandId, requestedDate);
-
-        assertFalse(actualProduct.isPresent());
+        assertThrows(ProductNotFoundException.class,
+                ()-> repository.getProductPricesInformation(productId, brandId, requestedDate));
     }
 
     private Prices createTestProductJpa(String productId, String brandId) {

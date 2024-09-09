@@ -2,15 +2,14 @@ package com.evaluation.gft.application;
 
 import com.evaluation.gft.domain.model.Product;
 import com.evaluation.gft.domain.ports.out.ProductRepository;
+import com.evaluation.gft.exceptions.ProductNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -34,26 +33,25 @@ class ProductUseCaseImplTest {
         var expectedProduct = createTestProduct(productId, productId);
 
         when(repository.getProductPricesInformation(productId, brandId, requestedDate))
-                .thenReturn(Optional.of(expectedProduct));
+                .thenReturn(expectedProduct);
 
         var actualProduct = productUseCase.getProductPricesInformation(productId, brandId, requestedDate);
 
-        assertTrue(actualProduct.isPresent());
-        assertEquals(expectedProduct, actualProduct.get());
+        assertEquals(expectedProduct, actualProduct);
     }
 
     @Test
-    void testGetProductPricesInformation_ReturnEmpty() {
+    void testGetProductPricesInformation_NotFound() {
         var productId = "productId";
         var brandId = "brandId";
         var requestedDate = LocalDateTime.of(2000, 5, 1, 0, 0, 0);
 
         when(repository.getProductPricesInformation(productId, brandId, requestedDate))
-                .thenReturn(Optional.empty());
+                .thenThrow(ProductNotFoundException.class);
 
-        var actualProduct = productUseCase.getProductPricesInformation(productId, brandId, requestedDate);
-
-        assertFalse(actualProduct.isPresent());
+        assertThrows(ProductNotFoundException.class,
+                () -> productUseCase.getProductPricesInformation(productId, brandId, requestedDate)
+        );
     }
 
     private Product createTestProduct(String productId, String brandId) {

@@ -29,9 +29,6 @@ public class ProductController {
 
         var product = useCase.getProductPricesInformation(productId, brandId, requestedDate);
 
-        if (product.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        return new ResponseEntity<>(mapper.mapToResponse(product.get()), HttpStatus.OK);
+        return new ResponseEntity<>(mapper.mapToResponse(product), HttpStatus.OK);
     }
 }
