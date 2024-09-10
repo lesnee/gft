@@ -153,7 +153,7 @@ public class ApplicationIntegrationTest {
 
     @Test
     public void testGetProductPricesInformationInvalidDate() throws Exception {
-        String url = "/products/price_info?productId=35455&requestedDate=invalid";
+        String url = "/products/price_info?productId=35455&brandId=1&requestedDate=invalid";
 
         mockMvc.perform(get(url))
                 .andExpect(status().isBadRequest());
