@@ -24,4 +24,11 @@ public class ProductControllerAdvice {
                 ex.getMessage(),
                 HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(value = {RuntimeException.class})
+    public ResponseEntity<String> runtimeExceptionHandler(NoResourceFoundException ex) {
+        return new ResponseEntity<>(
+                ex.getMessage(),
+                HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
