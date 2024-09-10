@@ -1,0 +1,549 @@
+{
+	"info": {
+		"_postman_id": "b009bf01-e9e0-4268-a1d1-f86afb95ad9a",
+		"name": "GFT tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38224441"
+	},
+	"item": [
+		{
+			"name": "Scenario 1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"/* Response has the following structure:\r",
+							"\"{\" +\r",
+							"                \"\\\"productId\\\":\\\"35455\\\",\" +\r",
+							"                \"\\\"brandId\\\":\\\"1\\\",\" +\r",
+							"                \"\\\"priceList\\\":1,\" +\r",
+							"                \"\\\"startDate\\\":\\\"2020-06-14T00:00:00\\\",\" +\r",
+							"                \"\\\"endDate\\\":\\\"2020-12-31T23:59:59\\\",\" +\r",
+							"                \"\\\"price\\\":35.50\" +\r",
+							"                 \"}\";\r",
+							"*/\r",
+							"\r",
+							"pm.test(\"Scenario 1\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"  const response = pm.response.json();\r",
+							"  pm.expect(response.productId).to.eql(\"35455\");\r",
+							"  pm.expect(response.brandId).to.eql(\"1\");\r",
+							"  pm.expect(response.priceList).to.eql(1);\r",
+							"  pm.expect(response.startDate).to.eql(\"2020-06-14T00:00:00\");\r",
+							"  pm.expect(response.endDate).to.eql(\"2020-12-31T23:59:59\");\r",
+							"  pm.expect(response.price).to.eql(35.50)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-14-10.00.00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"price_info"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "35455"
+						},
+						{
+							"key": "brandId",
+							"value": "1"
+						},
+						{
+							"key": "requestedDate",
+							"value": "2020-06-14-10.00.00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Scenario 2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"/* Response has the following structure:\r",
+							"\"{\" +\r",
+							"                \"\\\"productId\\\":\\\"35455\\\",\" +\r",
+							"                \"\\\"brandId\\\":\\\"1\\\",\" +\r",
+							"                \"\\\"priceList\\\":1,\" +\r",
+							"                \"\\\"startDate\\\":\\\"2020-06-14T00:00:00\\\",\" +\r",
+							"                \"\\\"endDate\\\":\\\"2020-12-31T23:59:59\\\",\" +\r",
+							"                \"\\\"price\\\":35.50\" +\r",
+							"                 \"}\";\r",
+							"*/\r",
+							"\r",
+							"pm.test(\"Scenario 1\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"  const response = pm.response.json();\r",
+							"  pm.expect(response.productId).to.eql(\"35455\");\r",
+							"  pm.expect(response.brandId).to.eql(\"1\");\r",
+							"  pm.expect(response.priceList).to.eql(1);\r",
+							"  pm.expect(response.startDate).to.eql(\"2020-06-14T00:00:00\");\r",
+							"  pm.expect(response.endDate).to.eql(\"2020-12-31T23:59:59\");\r",
+							"  pm.expect(response.price).to.eql(35.50)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-14-10.00.00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"price_info"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "35455"
+						},
+						{
+							"key": "brandId",
+							"value": "1"
+						},
+						{
+							"key": "requestedDate",
+							"value": "2020-06-14-10.00.00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Scenario 3",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"/* Response has the following structure:\r",
+							"\"{\" +\r",
+							"                \"\\\"productId\\\":\\\"35455\\\",\" +\r",
+							"                \"\\\"brandId\\\":\\\"1\\\",\" +\r",
+							"                \"\\\"priceList\\\":1,\" +\r",
+							"                \"\\\"startDate\\\":\\\"2020-06-14T00:00:00\\\",\" +\r",
+							"                \"\\\"endDate\\\":\\\"2020-12-31T23:59:59\\\",\" +\r",
+							"                \"\\\"price\\\":35.50\" +\r",
+							"                 \"}\";\r",
+							"*/\r",
+							"\r",
+							"pm.test(\"Scenario 1\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"  const response = pm.response.json();\r",
+							"  pm.expect(response.productId).to.eql(\"35455\");\r",
+							"  pm.expect(response.brandId).to.eql(\"1\");\r",
+							"  pm.expect(response.priceList).to.eql(1);\r",
+							"  pm.expect(response.startDate).to.eql(\"2020-06-14T00:00:00\");\r",
+							"  pm.expect(response.endDate).to.eql(\"2020-12-31T23:59:59\");\r",
+							"  pm.expect(response.price).to.eql(35.50)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-14-10.00.00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"price_info"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "35455"
+						},
+						{
+							"key": "brandId",
+							"value": "1"
+						},
+						{
+							"key": "requestedDate",
+							"value": "2020-06-14-10.00.00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Scenario 4",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"/* Response has the following structure:\r",
+							"\"{\" +\r",
+							"                \"\\\"productId\\\":\\\"35455\\\",\" +\r",
+							"                \"\\\"brandId\\\":\\\"1\\\",\" +\r",
+							"                \"\\\"priceList\\\":1,\" +\r",
+							"                \"\\\"startDate\\\":\\\"2020-06-14T00:00:00\\\",\" +\r",
+							"                \"\\\"endDate\\\":\\\"2020-12-31T23:59:59\\\",\" +\r",
+							"                \"\\\"price\\\":35.50\" +\r",
+							"                 \"}\";\r",
+							"*/\r",
+							"\r",
+							"pm.test(\"Scenario 1\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"  const response = pm.response.json();\r",
+							"  pm.expect(response.productId).to.eql(\"35455\");\r",
+							"  pm.expect(response.brandId).to.eql(\"1\");\r",
+							"  pm.expect(response.priceList).to.eql(1);\r",
+							"  pm.expect(response.startDate).to.eql(\"2020-06-14T00:00:00\");\r",
+							"  pm.expect(response.endDate).to.eql(\"2020-12-31T23:59:59\");\r",
+							"  pm.expect(response.price).to.eql(35.50)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-14-10.00.00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"price_info"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "35455"
+						},
+						{
+							"key": "brandId",
+							"value": "1"
+						},
+						{
+							"key": "requestedDate",
+							"value": "2020-06-14-10.00.00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Scenario 5",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"/* Response has the following structure:\r",
+							"\"{\" +\r",
+							"                \"\\\"productId\\\":\\\"35455\\\",\" +\r",
+							"                \"\\\"brandId\\\":\\\"1\\\",\" +\r",
+							"                \"\\\"priceList\\\":1,\" +\r",
+							"                \"\\\"startDate\\\":\\\"2020-06-14T00:00:00\\\",\" +\r",
+							"                \"\\\"endDate\\\":\\\"2020-12-31T23:59:59\\\",\" +\r",
+							"                \"\\\"price\\\":35.50\" +\r",
+							"                 \"}\";\r",
+							"*/\r",
+							"\r",
+							"pm.test(\"Scenario 1\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"  const response = pm.response.json();\r",
+							"  pm.expect(response.productId).to.eql(\"35455\");\r",
+							"  pm.expect(response.brandId).to.eql(\"1\");\r",
+							"  pm.expect(response.priceList).to.eql(1);\r",
+							"  pm.expect(response.startDate).to.eql(\"2020-06-14T00:00:00\");\r",
+							"  pm.expect(response.endDate).to.eql(\"2020-12-31T23:59:59\");\r",
+							"  pm.expect(response.price).to.eql(35.50)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-14-10.00.00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"price_info"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "35455"
+						},
+						{
+							"key": "brandId",
+							"value": "1"
+						},
+						{
+							"key": "requestedDate",
+							"value": "2020-06-14-10.00.00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Not found",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"/* Response has the following structure:\r",
+							"\"{\" +\r",
+							"                \"\\\"productId\\\":\\\"35455\\\",\" +\r",
+							"                \"\\\"brandId\\\":\\\"1\\\",\" +\r",
+							"                \"\\\"priceList\\\":1,\" +\r",
+							"                \"\\\"startDate\\\":\\\"2020-06-14T00:00:00\\\",\" +\r",
+							"                \"\\\"endDate\\\":\\\"2020-12-31T23:59:59\\\",\" +\r",
+							"                \"\\\"price\\\":35.50\" +\r",
+							"                 \"}\";\r",
+							"*/\r",
+							"\r",
+							"pm.test(\"Scenario 1\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"  const response = pm.response.json();\r",
+							"  pm.expect(response.productId).to.eql(\"35455\");\r",
+							"  pm.expect(response.brandId).to.eql(\"1\");\r",
+							"  pm.expect(response.priceList).to.eql(1);\r",
+							"  pm.expect(response.startDate).to.eql(\"2020-06-14T00:00:00\");\r",
+							"  pm.expect(response.endDate).to.eql(\"2020-12-31T23:59:59\");\r",
+							"  pm.expect(response.price).to.eql(35.50)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-14-10.00.00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"price_info"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "35455"
+						},
+						{
+							"key": "brandId",
+							"value": "1"
+						},
+						{
+							"key": "requestedDate",
+							"value": "2020-06-14-10.00.00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bad request",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"/* Response has the following structure:\r",
+							"\"{\" +\r",
+							"                \"\\\"productId\\\":\\\"35455\\\",\" +\r",
+							"                \"\\\"brandId\\\":\\\"1\\\",\" +\r",
+							"                \"\\\"priceList\\\":1,\" +\r",
+							"                \"\\\"startDate\\\":\\\"2020-06-14T00:00:00\\\",\" +\r",
+							"                \"\\\"endDate\\\":\\\"2020-12-31T23:59:59\\\",\" +\r",
+							"                \"\\\"price\\\":35.50\" +\r",
+							"                 \"}\";\r",
+							"*/\r",
+							"\r",
+							"pm.test(\"Scenario 1\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"  const response = pm.response.json();\r",
+							"  pm.expect(response.productId).to.eql(\"35455\");\r",
+							"  pm.expect(response.brandId).to.eql(\"1\");\r",
+							"  pm.expect(response.priceList).to.eql(1);\r",
+							"  pm.expect(response.startDate).to.eql(\"2020-06-14T00:00:00\");\r",
+							"  pm.expect(response.endDate).to.eql(\"2020-12-31T23:59:59\");\r",
+							"  pm.expect(response.price).to.eql(35.50)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-14-10.00.00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"price_info"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "35455"
+						},
+						{
+							"key": "brandId",
+							"value": "1"
+						},
+						{
+							"key": "requestedDate",
+							"value": "2020-06-14-10.00.00"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
