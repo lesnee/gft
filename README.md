@@ -16,6 +16,8 @@ La estructura del código está organizada en tres carpetas principales:
 
 Además de las pruebas unitarias, se incluyen pruebas de integración que cubren los 5 escenarios requeridos en la prueba, así como los escenarios de "not found" y "bad request". Para estas pruebas, se inicializa la base de datos y se realizan llamadas a la API.
 
+También, en la carpeta `postman` se incluye una collección de postman con tests que incluyen los 5 escenarios mas los casos de `Bad Request` y `Not Found`. 
+
 ## Uso
 
 La base de datos es volátil y se crea cada vez que se inicia la aplicación. Para utilizar la aplicación, es necesario compilar y ejecutar la aplicación, y luego poblar la tabla (que se crea automáticamente a partir de la entidad `Prices`).
