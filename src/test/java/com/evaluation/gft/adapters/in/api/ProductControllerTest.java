@@ -1,6 +1,7 @@
 package com.evaluation.gft.adapters.in.api;
 
 import com.evaluation.gft.adapters.in.api.mapper.ProductResponseMapper;
+import com.evaluation.gft.adapters.in.api.model.ProductResponse;
 import com.evaluation.gft.domain.ports.in.ProductUseCase;
 import com.evaluation.gft.domain.model.Product;
 import com.evaluation.gft.exceptions.ProductNotFoundException;
@@ -14,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 class ProductControllerTest {

@@ -1,6 +1,7 @@
 package com.evaluation.gft.adapters.in.api;
 
 import com.evaluation.gft.adapters.in.api.mapper.ProductResponseMapper;
+import com.evaluation.gft.adapters.in.api.model.ProductResponse;
 import com.evaluation.gft.domain.ports.in.ProductUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;

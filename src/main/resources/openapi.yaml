@@ -3,6 +3,8 @@ info:
   title: Product API
   description: API for fetching product price information.
   version: 1.0.0
+tags:
+  - name: products
 servers:
   - url: http://localhost:8080  # Update this if the server URL is different
 paths:
@@ -10,6 +12,8 @@ paths:
     get:
       summary: Get Product Price Information
       operationId: getProductPricesInformation
+      tags:
+        - products
       parameters:
         - name: productId
           in: query
