@@ -1,7 +1,7 @@
 package com.evaluation.gft.adapters.in.api;
 
-import com.evaluation.gft.adapters.in.api.dto.ProductResponse;
 import com.evaluation.gft.adapters.in.api.mapper.ProductResponseMapper;
+import com.evaluation.gft.adapters.in.api.model.ProductResponse;
 import com.evaluation.gft.domain.ports.in.ProductUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,15 +17,15 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/products")
-public class ProductController {
+public class ProductController implements ProductsApi {
     ProductUseCase useCase;
     ProductResponseMapper mapper;
 
-    @GetMapping("/price_info")
+    @Override
     public ResponseEntity<ProductResponse> getProductPricesInformation(
-            @RequestParam String productId,
-            @RequestParam String brandId,
-            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd-HH.mm.ss") LocalDateTime requestedDate) {
+            String productId,
+            String brandId,
+            LocalDateTime requestedDate) {
 
         var product = useCase.getProductPricesInformation(productId, brandId, requestedDate);
 

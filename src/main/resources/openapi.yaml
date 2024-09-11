@@ -1,0 +1,72 @@
+openapi: 3.0.0
+info:
+  title: Product API
+  description: API for fetching product price information.
+  version: 1.0.0
+tags:
+  - name: products
+servers:
+  - url: http://localhost:8080  # Update this if the server URL is different
+paths:
+  /price_info:
+    get:
+      summary: Get Product Price Information
+      operationId: getProductPricesInformation
+      tags:
+        - products
+      parameters:
+        - name: productId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The ID of the product.
+        - name: brandId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: The brand ID of the product.
+        - name: requestedDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+          description: The date and time the price information is requested for, in the format 'yyyy-MM-dd'T'HH:mm:ss'.
+      responses:
+        '200':
+          description: Product price information retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+        '404':
+          description: Product not found
+components:
+  schemas:
+    ProductResponse:
+      type: object
+      required:
+        - productId
+        - brandId
+        - priceList
+        - startDate
+        - endDate
+        - price
+      properties:
+        productId:
+          type: string
+        brandId:
+          type: string
+        priceList:
+          type: integer
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        price:
+          type: number
+          format: float

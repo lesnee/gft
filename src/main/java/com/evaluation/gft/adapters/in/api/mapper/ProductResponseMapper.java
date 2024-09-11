@@ -1,6 +1,6 @@
 package com.evaluation.gft.adapters.in.api.mapper;
 
-import com.evaluation.gft.adapters.in.api.dto.ProductResponse;
+import com.evaluation.gft.adapters.in.api.model.ProductResponse;
 import com.evaluation.gft.domain.model.Product;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;

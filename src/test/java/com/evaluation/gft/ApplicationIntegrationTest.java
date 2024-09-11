@@ -48,7 +48,7 @@ public class ApplicationIntegrationTest {
 
     @Test
     public void testGetProductPricesInformationScenario1() throws Exception {
-        String url = "/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-14-10.00.00";
+        String url = "/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-14T10:00:00";
 
         String expectedResponse = "{" +
                 "\"productId\":\"35455\"," +
@@ -66,7 +66,7 @@ public class ApplicationIntegrationTest {
 
     @Test
     public void testGetProductPricesInformationScenario2() throws Exception {
-        String url = "/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-14-16.00.00";
+        String url = "/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-14T16:00:00";
 
         String expectedResponse = "{" +
                 "\"productId\":\"35455\"," +
@@ -84,7 +84,7 @@ public class ApplicationIntegrationTest {
 
     @Test
     public void testGetProductPricesInformationScenario3() throws Exception {
-        String url = "/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-14-21.00.00";
+        String url = "/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-14T21:00:00";
         String expectedResponse = "{" +
                 "\"productId\":\"35455\"," +
                 "\"brandId\":\"1\"," +
@@ -101,7 +101,7 @@ public class ApplicationIntegrationTest {
 
     @Test
     public void testGetProductPricesInformationScenario4() throws Exception {
-        String url = "/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-15-10.00.00";
+        String url = "/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-15T10:00:00";
 
         String expectedResponse = "{" +
                 "\"productId\":\"35455\"," +
@@ -119,7 +119,7 @@ public class ApplicationIntegrationTest {
 
     @Test
     public void testGetProductPricesInformationScenario5() throws Exception {
-        String url = "/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-16-21.00.00";
+        String url = "/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-16T21:00:00";
 
         String expectedResponse = "{" +
                 "\"productId\":\"35455\"," +
@@ -137,7 +137,7 @@ public class ApplicationIntegrationTest {
 
     @Test
     public void testGetProductPricesInformationNotFound() throws Exception {
-        String url = "/products/price_info?productId=35455&brandId=2&requestedDate=2020-06-16-21.00.00";
+        String url = "/products/price_info?productId=35455&brandId=2&requestedDate=2020-06-16T21:00:00";
 
         mockMvc.perform(get(url))
                 .andExpect(status().isNotFound());
@@ -145,7 +145,7 @@ public class ApplicationIntegrationTest {
 
     @Test
     public void testGetProductPricesInformationParamMissing() throws Exception {
-        String url = "/products/price_info&productId=35455&requestedDate=2020-06-16-21.00.00";
+        String url = "/products/price_info?productId=35455&requestedDate=2020-06-16-21.00.00";
 
         mockMvc.perform(get(url))
                 .andExpect(status().isBadRequest());
@@ -153,7 +153,7 @@ public class ApplicationIntegrationTest {
 
     @Test
     public void testGetProductPricesInformationInvalidDate() throws Exception {
-        String url = "/products/price_info&productId=35455&requestedDate=invalid";
+        String url = "/products/price_info?productId=35455&brandId=1&requestedDate=invalid";
 
         mockMvc.perform(get(url))
                 .andExpect(status().isBadRequest());
