@@ -21,11 +21,11 @@ public class ProductController implements ProductsApi {
     ProductUseCase useCase;
     ProductResponseMapper mapper;
 
-    @GetMapping("/price_info")
+    @Override
     public ResponseEntity<ProductResponse> getProductPricesInformation(
-            @RequestParam String productId,
-            @RequestParam String brandId,
-            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd-HH.mm.ss") LocalDateTime requestedDate) {
+            String productId,
+            String brandId,
+            LocalDateTime requestedDate) {
 
         var product = useCase.getProductPricesInformation(productId, brandId, requestedDate);
 
