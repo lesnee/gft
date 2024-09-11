@@ -35,7 +35,7 @@ La base de datos es volátil y se crea cada vez que se inicia la aplicación. Pa
    ```
 Deberías ver 4 filas de datos.
 
-5. Utilizando Postman (o cualquier otra herramienta de tu preferencia), realiza una petición GET al endpoint: `http://localhost:8080/products/price_info` con atributos `productId`, `brandId` y `requestedDate`. La url de ejemplo en este caso sería: `http://localhost:8080/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-15-10.00.00`.
+5. Utilizando Postman (o cualquier otra herramienta de tu preferencia), realiza una petición GET al endpoint: `http://localhost:8080/products/price_info` con atributos `productId`, `brandId` y `requestedDate`. La url de ejemplo en este caso sería: `http://localhost:8080/products/price_info?productId=35455&brandId=1&requestedDate=2020-06-15T10:00:00`.
 
 6. Debería recibir la siguiente respuesta
 ```
